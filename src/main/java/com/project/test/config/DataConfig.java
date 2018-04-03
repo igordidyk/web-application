@@ -21,6 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@EnableJpaRepositories("com.project.test.dao")
 @PropertySource("classpath:db.properties")
 public class DataConfig {
     @Autowired
