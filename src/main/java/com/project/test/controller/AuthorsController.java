@@ -18,7 +18,9 @@ public class AuthorsController {
     private AuthorsService authorsService;
 
     @PostMapping("/create")
-    public String create(@RequestParam("name") String name, @RequestParam("gender") String gender, @RequestParam("born") String born) {
+    public String create(@RequestParam("name") String name,
+                         @RequestParam("gender") String gender,
+                         @RequestParam("born") String born) {
         Authors author = new Authors();
         author.setName(name);
         author.setGender(gender);
@@ -29,7 +31,8 @@ public class AuthorsController {
     }
 
     @GetMapping("/edit-{id}")
-    public String edit(@PathVariable("id") int id, Model model) {
+    public String edit(@PathVariable("id") int id,
+                       Model model) {
         model.addAttribute("authorsInfo", authorsService.findOne(id));
         return "authors/authorEditing";
     }
@@ -40,4 +43,16 @@ public class AuthorsController {
         return "redirect:/authors";
     }
 
+    @PostMapping("/update")
+    public String update(@RequestParam("id") int id,
+                         @RequestParam("name") String name,
+                         @RequestParam("gender") String gender,
+                         @RequestParam("born") String born) {
+        Authors author = authorsService.findOne(id);
+        author.setName(name);
+        author.setGender(gender);
+        author.setBorn(born);
+        authorsService.update(author);
+        return "redirect:/authors";
+    }
 }
