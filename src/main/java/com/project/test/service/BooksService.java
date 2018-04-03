@@ -4,7 +4,7 @@ import com.project.test.entity.Books;
 import java.util.List;
 
 public interface BooksService {
-    void insert(Books books);
+    void save(Books books);
 
     void update(Books books);
 
