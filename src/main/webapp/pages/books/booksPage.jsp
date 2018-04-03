@@ -50,6 +50,39 @@
             </div>
         </div>
     </form>
+
+    <br>
+    <br/>
+    <table id="books">
+        <thead>
+        <tr>
+            <th class="disable-sorting">#</th>
+            <th>Name</th>
+            <th>Published</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${booksList}" var="book">
+            <tr>
+                <td>${book.id}</td>
+                <td>${book.name}</td>
+                <td>${book.published}</td>
+                <td>${book.gerne}</td>
+                <td>${book.rating}</td>
+                <td><p><a href="/books/edit-${book.id}">edit</a>
+                    <a href="/books/delete-${book.id}">delete</a></p>
+
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <script type="text/javascript" charset="utf-8">
+        $('#books').dataTable();
+    </script>
 </div>
 
 <jsp:include page="../templates/footer.jsp"/>
