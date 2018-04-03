@@ -21,7 +21,6 @@ public class AuthorsController {
 
     @PostMapping("/create")
     public String create(@RequestParam("name") String name, @RequestParam("gender") String gender, @RequestParam("born") String born) {
-        System.out.println(name);
         Authors author = new Authors();
         author.setName(name);
         author.setGender(gender);

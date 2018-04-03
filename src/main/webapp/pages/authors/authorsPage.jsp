@@ -9,8 +9,10 @@
     </ol>
     <br>
     <br>
+    <h3>Create authors</h3>
+
     <form action="/authors/create" class="form-horizontal" method="post">
-        <%--accept-charset="UTF-8--%>">
+        <%--accept-charset="UTF-8--%>
         <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
@@ -36,6 +38,37 @@
             </div>
         </div>
     </form>
+    <br>
+    <br/>
+    <h3>Show all authors</h3>
+    <table id="authors">
+        <thead>
+        <tr>
+            <th class="disable-sorting">#</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Born</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${authorsList}" var="author">
+            <tr>
+                <td>${author.id}</td>
+                <td>${author.name}</td>
+                <td>${author.gender}</td>
+                <td>${author.born}</td>
+                <td><p><a href="/authors/edit-${author.id}">edit</a>
+                    <a href="/authors/delete-${author.id}">delete</a></p>
+
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <script type="text/javascript" charset="utf-8">
+        $('#authors').dataTable();
+    </script>
 </div>
 
 <jsp:include page="../templates/footer.jsp"/>
