@@ -32,7 +32,7 @@ public class BooksController {
         Books book = new Books();
         book.setName(name);
         book.setPublished(new SimpleDateFormat(published).format(new Date()));
-        book.setGerne(genre);
+        book.setGenre(genre);
         book.setRating(rating);
         for (Integer integer : listAuthorsId) {
             Authors author = authorsService.findOne(integer);

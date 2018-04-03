@@ -9,6 +9,8 @@
     </ol>
     <br>
     <br>
+    <h3>Create books</h3>
+
     <form action="/books/create" class="form-horizontal" method="post">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
@@ -53,6 +55,8 @@
 
     <br>
     <br/>
+    <h3>Show books</h3>
+    <br>
     <table id="books">
         <thead>
         <tr>
@@ -70,7 +74,7 @@
                 <td>${book.id}</td>
                 <td>${book.name}</td>
                 <td>${book.published}</td>
-                <td>${book.gerne}</td>
+                <td>${book.genre}</td>
                 <td>${book.rating}</td>
                 <td><p><a href="/books/edit-${book.id}">edit</a>
                     <a href="/books/delete-${book.id}">delete</a></p>
