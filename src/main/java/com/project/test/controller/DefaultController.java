@@ -11,4 +11,9 @@ public class DefaultController {
     public String index(Model model) {
         return "index";
     }
+
+    @GetMapping("/authors")
+    public String authorsPage(Model model) {
+        return "authors/authorsPage";
+    }
 }
