@@ -56,6 +56,20 @@ public class BooksController {
         return "books/bookEditing";
     }
 
+    @PostMapping("/update")
+    public String update(@RequestParam("name") String name,
+                         @RequestParam("published") String published,
+                         @RequestParam("genre") String genre,
+                         @RequestParam("rating") String rating,
+                         @RequestParam("id") int booksId) {
+        Books book = booksService.findOne(booksId);
+        book.setName(name);
+        book.setPublished(published);
+        book.setGenre(genre);
+        book.setRating(rating);
+        booksService.save(book);
+        return "redirect:/books";
+    }
 
 
 }
