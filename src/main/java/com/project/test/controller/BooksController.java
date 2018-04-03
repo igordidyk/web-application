@@ -6,6 +6,7 @@ import com.project.test.service.AuthorsService;
 import com.project.test.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -39,7 +40,7 @@ public class BooksController {
             authorsList.add(author);
         }
         book.setAuthors(authorsList);
-        booksService.insert(book);
+        booksService.save(book);
         return "redirect:/books";
     }
 
@@ -48,5 +49,13 @@ public class BooksController {
         booksService.delete(id);
         return "redirect:/books";
     }
+
+    @GetMapping("/edit-{id}")
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute("booksInfo", booksService.findOne(id));
+        return "books/bookEditing";
+    }
+
+
 
 }
