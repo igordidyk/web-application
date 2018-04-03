@@ -34,5 +34,10 @@ public class AuthorsController {
         return "authors/authorEditing";
     }
 
+    @GetMapping("/delete-{id}")
+    public String delete(@PathVariable("id") int id) {
+        authorsService.delete(id);
+        return "redirect:/authors";
+    }
 
 }
