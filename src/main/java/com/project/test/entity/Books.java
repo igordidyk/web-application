@@ -22,7 +22,7 @@ public class Books {
     private String published;
     @Setter
     @Getter
-    private String gerne;
+    private String genre;
     @Setter
     @Getter
     private String rating;
