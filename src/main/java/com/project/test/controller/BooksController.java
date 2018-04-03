@@ -22,11 +22,6 @@ public class BooksController {
     @Autowired
     private BooksService booksService;
 
-    @GetMapping("/books")
-    public String bookCreationPage() {
-        return "books/bookEditing";
-    }
-
     @PostMapping("/create")
     public String create(@RequestParam("authorOfBook") List<Integer> listAuthorsId,
                          @RequestParam("name") String name,

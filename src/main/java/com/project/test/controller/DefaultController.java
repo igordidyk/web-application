@@ -21,4 +21,8 @@ public class DefaultController {
         model.addAttribute("authorsList", authorsService.findAll());
         return "authors/authorsPage";
     }
+    @GetMapping("/books")
+    public String booksPage(Model model) {
+        return "books/booksPage";
+    }
 }
