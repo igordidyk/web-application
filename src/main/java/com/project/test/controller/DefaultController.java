@@ -1,6 +1,7 @@
 package com.project.test.controller;
 
 import com.project.test.entity.Authors;
+import com.project.test.entity.Books;
 import com.project.test.service.AuthorsService;
 import com.project.test.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,20 @@ public class DefaultController {
         return "index";
     }
 
+    @GetMapping("/showBooks")
+    public String showBooks(Model model) {
+        final List<Books> selectedBooks = new ArrayList<>();
+        List<Books> books = booksService.findBooksWithAuthors();
+        for (Books book : books) {
+            List<Authors> authors = book.getAuthors();
+            for (Authors author : authors) {
+                if (author.getBooks().size() > 1) {
+                    selectedBooks.add(book);
+                }
+            }
+        }
+        model.addAttribute("selectedBooks", selectedBooks);
 
+        return "index";
+    }
 }

@@ -34,10 +34,36 @@
             </tbody>
         </table>
     </div>
+    <br>
+    <p class="lead">#TASK_3: <a href="/showBooks">Return books </a> whose author has more than 1 written books</p>
+    <div id="selectedBooks">
+        <table id="bookList">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Published</th>
+                <th>Genre</th>
+                <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${selectedBooks}" var="book">
+                <tr>
+                    <td>${book.name}</td>
+                    <td>${book.published}</td>
+                    <td>${book.genre}</td>
+                    <td>${book.rating}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <br>
+
 
 </div>
-    <script type="text/javascript" charset="utf-8">
-        $('#showAuthors').dataTable();
-        $('#bookList').dataTable();
-    </script>
+<script type="text/javascript" charset="utf-8">
+    $('#showAuthors').dataTable();
+    $('#bookList').dataTable();
+</script>
 <jsp:include page="templates/footer.jsp"/>

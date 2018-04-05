@@ -1,6 +1,7 @@
 package com.project.test.service;
 
 import com.project.test.entity.Books;
+
 import java.util.List;
 
 public interface BooksService {
@@ -13,4 +14,7 @@ public interface BooksService {
     Books findOne(int id);
 
     List<Books> findAll();
+
+    List<Books> findBooksWithAuthors();
+
 }
