@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,12 +22,21 @@ public class AuthorsController {
     public String create(@RequestParam("name") String name,
                          @RequestParam("gender") String gender,
                          @RequestParam("born") String born) {
-        Authors author = new Authors();
-        author.setName(name);
-        author.setGender(gender);
-        String bornDate = new SimpleDateFormat(born).format(new Date());
-        author.setBorn(bornDate);
-        authorsService.save(author);
+        try {
+            Authors author = new Authors();
+            System.out.println(encodeString(name));
+            author.setName(encodeString(name));
+            author.setGender(encodeString(gender));
+            String bornDate = new SimpleDateFormat(born).format(new Date());
+            author.setBorn(bornDate);
+            System.out.println(author);
+            authorsService.save(author);
+
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/authors";
     }
 
@@ -49,10 +59,20 @@ public class AuthorsController {
                          @RequestParam("gender") String gender,
                          @RequestParam("born") String born) {
         Authors author = authorsService.findOne(id);
-        author.setName(name);
-        author.setGender(gender);
-        author.setBorn(born);
-        authorsService.update(author);
+
+        try {
+            author.setName(encodeString(name));
+            author.setGender(encodeString(gender));
+            author.setBorn(encodeString(born));
+            authorsService.update(author);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return "redirect:/authors";
+    }
+
+
+    public String encodeString(String s) throws UnsupportedEncodingException {
+        return new String(s.getBytes("ISO-8859-1"), "UTF-8");
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -30,6 +31,9 @@ public class DataConfig {
     @Bean
     public DataSource dataSource(){
         HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.addDataSourceProperty(env.getProperty("db.encoding"),env.getProperty("db.encoding.val"));
+        hikariConfig.addDataSourceProperty(env.getProperty("db.charset"),env.getProperty("db.charset.val"));
+        hikariConfig.addDataSourceProperty(env.getProperty("db.unicode"),env.getProperty("db.unicode.val"));
         hikariConfig.setDriverClassName(env.getProperty("db.driver.class.name"));
         hikariConfig.setJdbcUrl(env.getProperty("db.url"));
         hikariConfig.setUsername(env.getProperty("db.user"));
