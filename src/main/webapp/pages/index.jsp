@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="templates/header.jsp"/>
 
@@ -59,11 +60,17 @@
         </table>
     </div>
     <br>
+    <p class="lead">#TASK_4: <a href="/findAuthor">Find out author</a> which has most books</p>
+    <p>${author.name}</p>
+    <p>${author.gender}</p>
+    <p>${author.born}</p>
+    <br>
 
 
+    <script type="text/javascript" charset="utf-8">
+        $('#showAuthors').dataTable();
+        $('#bookList').dataTable();
+    </script>
 </div>
-<script type="text/javascript" charset="utf-8">
-    $('#showAuthors').dataTable();
-    $('#bookList').dataTable();
-</script>
+
 <jsp:include page="templates/footer.jsp"/>

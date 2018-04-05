@@ -73,4 +73,25 @@ public class DefaultController {
 
         return "index";
     }
+
+    @GetMapping("/findAuthor")
+    public String findAuthor(Model model) {
+        Authors author2;
+        int quantity = 0;
+        List<Authors> authors = authorsService.findAll();
+        if (authors != null && authors.size() != 0) {
+            author2 = authors.get(0);
+            for (Authors author : authors) {
+                int size = author.getBooks().size();
+                if (size > quantity) {
+                    quantity = size;
+                    author2 = author;
+                }
+            }
+        } else {
+            throw new NullPointerException("List authors is empty");
+        }
+        model.addAttribute("author", author2);
+        return "index";
+    }
 }
