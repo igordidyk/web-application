@@ -8,39 +8,38 @@
         <li class="active">Authors</li>
     </ol>
     <br>
-    <br>
     <h3>Create authors</h3>
-
+    <br>
     <form action="/authors/create" class="form-horizontal" method="post">
-        <%--accept-charset="UTF-8--%>
         <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Name of books" name="name">
+                <input type="text" class="form-control" id="inputName" placeholder="Name of books" name="name" required>
             </div>
         </div>
         <div class="form-group">
             <label for="inputGender" class="col-sm-2 control-label">Gender</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputGender" placeholder="Gender" name="gender">
+                <input type="text" class="form-control" id="inputGender" placeholder="Gender" name="gender" required>
             </div>
         </div>
         <div class="form-group">
             <label for="inputBorn" class="col-sm-2 control-label">Born</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="inputBorn" placeholder="Born" name="born">
+                <input type="date" class="form-control" id="inputBorn" placeholder="Born" name="born" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Create</button>
+                <button type="submit" class="btn btn-default">Create authors</button>
             </div>
         </div>
     </form>
     <br>
     <br/>
-    <h3>Show all authors</h3>
+    <h3>Show authors</h3>
+    <br>
     <table id="authors">
         <thead>
         <tr>

@@ -8,32 +8,31 @@
         <li class="active">Books</li>
     </ol>
     <br>
-    <br>
     <h3>Create books</h3>
-
+    <br>
     <form action="/books/create" class="form-horizontal" method="post">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Name of books" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Name of books" name="name" required>
             </div>
         </div>
         <div class="form-group">
             <label for="published" class="col-sm-2 control-label">Published</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="published" placeholder="published" name="published">
+                <input type="date" class="form-control" id="published" placeholder="published" name="published" required>
             </div>
         </div>
         <div class="form-group">
             <label for="genre" class="col-sm-2 control-label">Genre</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="genre" placeholder="genre" name="genre">
+                <input type="text" class="form-control" id="genre" placeholder="genre" name="genre" required>
             </div>
         </div>
         <div class="form-group">
             <label for="rating" class="col-sm-2 control-label">Rating</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="rating" placeholder="rating" name="rating">
+                <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" required>
             </div>
         </div>
         <div class="form-group">
@@ -48,12 +47,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Create</button>
+                <button type="submit" class="btn btn-default">Create books</button>
             </div>
         </div>
     </form>
 
-    <br>
     <br/>
     <h3>Show books</h3>
     <br>
