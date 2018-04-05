@@ -24,14 +24,10 @@ public class AuthorsController {
                          @RequestParam("born") String born) {
         try {
             Authors author = new Authors();
-            System.out.println(encodeString(name));
             author.setName(encodeString(name));
             author.setGender(encodeString(gender));
-            String bornDate = new SimpleDateFormat(born).format(new Date());
-            author.setBorn(bornDate);
-            System.out.println(author);
+            author.setBorn(new SimpleDateFormat(born).format(new Date()));
             authorsService.save(author);
-
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

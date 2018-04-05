@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,18 +30,24 @@ public class BooksController {
                          @RequestParam("published") String published,
                          @RequestParam("genre") String genre,
                          @RequestParam("rating") String rating) {
-        List<Authors> authorsList = new ArrayList<>();
-        Books book = new Books();
-        book.setName(name);
-        book.setPublished(new SimpleDateFormat(published).format(new Date()));
-        book.setGenre(genre);
-        book.setRating(rating);
-        for (Integer integer : listAuthorsId) {
-            Authors author = authorsService.findOne(integer);
-            authorsList.add(author);
+
+        try {
+            List<Authors> authorsList = new ArrayList<>();
+            Books book = new Books();
+            book.setName(encodeString(name));
+            book.setPublished(encodeString(new SimpleDateFormat(published).format(new Date())));
+            book.setGenre(encodeString(genre));
+            book.setRating(encodeString(rating));
+            for (Integer integer : listAuthorsId) {
+                Authors author = authorsService.findOne(integer);
+                authorsList.add(author);
+            }
+            book.setAuthors(authorsList);
+            booksService.save(book);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-        book.setAuthors(authorsList);
-        booksService.save(book);
+
         return "redirect:/books";
     }
 
@@ -62,14 +69,25 @@ public class BooksController {
                          @RequestParam("genre") String genre,
                          @RequestParam("rating") String rating,
                          @RequestParam("id") int booksId) {
-        Books book = booksService.findOne(booksId);
-        book.setName(name);
-        book.setPublished(published);
-        book.setGenre(genre);
-        book.setRating(rating);
-        booksService.save(book);
+        try {
+
+            Books book = booksService.findOne(booksId);
+            book.setName(encodeString(name));
+            book.setPublished(encodeString(published));
+            book.setGenre(encodeString(genre));
+            book.setRating(encodeString(rating));
+            booksService.save(book);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+
         return "redirect:/books";
     }
 
+    public String encodeString(String s) throws UnsupportedEncodingException {
+        return new String(s.getBytes("ISO-8859-1"), "UTF-8");
+    }
 
 }
