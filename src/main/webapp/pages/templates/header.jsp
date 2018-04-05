@@ -10,7 +10,7 @@
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-    <%--<link href="css/sticky-footer.css" rel="stylesheet">--%>
+    <link href="../css/sticky-footer.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
