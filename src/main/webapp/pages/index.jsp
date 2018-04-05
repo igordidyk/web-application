@@ -65,7 +65,32 @@
     <p>${author.gender}</p>
     <p>${author.born}</p>
     <br>
+    <br>
+    <p class="lead">#TASK_5: Calculate number of books by genre</p>
 
+    <form action="/calcBooks" method="get">
+        <div class="form-group">
+            <label for="gerne" class="col-sm-2 control-label">Gerne</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="gerne" name="bookByGenre">
+                    <c:forEach items="${booksList}" var="book">
+                        <option value="${book.id}">${book.genre}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Calculate</button>
+            </div>
+        </div>
+    </form>
+
+    <p class="lead">Quantity books by genre: ${quantityBooksByGenre}</p>
+
+
+    <br>
 
     <script type="text/javascript" charset="utf-8">
         $('#showAuthors').dataTable();

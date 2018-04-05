@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -92,6 +93,20 @@ public class DefaultController {
             throw new NullPointerException("List authors is empty");
         }
         model.addAttribute("author", author2);
+        return "index";
+    }
+
+    @GetMapping("/calcBooks")
+    public String calculateBooks(Model model, @RequestParam("bookByGenre") int booksId) {
+        int quantityBooksByGenre = 0;
+        for (Books book : booksService.findAll()) {
+            if (book.getGenre().equals(booksService.findOne(booksId).getGenre())) {
+                quantityBooksByGenre++;
+            }
+        }
+        System.out.println(quantityBooksByGenre);
+        model.addAttribute("quantityBooksByGenre", quantityBooksByGenre);
+//        Books bookByGerne = booksService.findBooksByGerne();
         return "index";
     }
 }
