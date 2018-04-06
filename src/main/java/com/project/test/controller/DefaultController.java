@@ -101,7 +101,6 @@ public class DefaultController {
                 quantityBooksByGenre++;
             }
         }
-        System.out.println(quantityBooksByGenre);
         model.addAttribute("quantityBooksByGenre", quantityBooksByGenre);
         return "index";
     }

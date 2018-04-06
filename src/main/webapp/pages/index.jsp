@@ -61,9 +61,12 @@
     </div>
     <br>
     <p class="lead">#TASK_4: <a href="/findAuthor">Find out author</a> which has most books</p>
-    <p>${author.name}</p>
-    <p>${author.gender}</p>
-    <p>${author.born}</p>
+    <p>Author info:</p>
+    <ul>
+        <li>Name: ${author.name}</li>
+        <li>Gender: ${author.gender}</li>
+        <li>Born: ${author.born}</li>
+    </ul>
     <br>
     <br>
     <p class="lead">#TASK_5: Calculate number of books by genre</p>
