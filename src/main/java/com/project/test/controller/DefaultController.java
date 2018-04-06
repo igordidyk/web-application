@@ -23,6 +23,7 @@ public class DefaultController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("booksList", booksService.findAll());
         return "index";
     }
 
