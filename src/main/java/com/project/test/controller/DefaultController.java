@@ -60,14 +60,13 @@ public class DefaultController {
 
     @GetMapping("/showBooks")
     public String showBooks(Model model) {
-        final List<Books> selectedBooks = new ArrayList<>();
-        List<Books> books = booksService.findBooksWithAuthors();
-        for (Books book : books) {
-            List<Authors> authors = book.getAuthors();
-            for (Authors author : authors) {
-                if (author.getBooks().size() > 1) {
-                    selectedBooks.add(book);
-                }
+        List<Authors> all = authorsService.findAll();
+        List<Books> selectedBooks = null;
+        for (Authors authorsItem : all) {
+            int count = authorsItem.getBooks().size();
+            if (count > 1) {
+                List<Books> books = authorsItem.getBooks();
+                selectedBooks = books;
             }
         }
         model.addAttribute("selectedBooks", selectedBooks);
