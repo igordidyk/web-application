@@ -49,11 +49,8 @@ public class DefaultController {
             int currentYear = Calendar.getInstance().get(Calendar.YEAR);
             int age = currentYear - year;
             if (age >= 55) {
-                System.out.println(author);
                 showAuthors.add(author);
-                System.out.println(showAuthors);
             }
-            System.out.println(age);
         }
         model.addAttribute("showAuthors", showAuthors);
         return "index";
@@ -106,7 +103,6 @@ public class DefaultController {
         }
         System.out.println(quantityBooksByGenre);
         model.addAttribute("quantityBooksByGenre", quantityBooksByGenre);
-//        Books bookByGerne = booksService.findBooksByGerne();
         return "index";
     }
 }

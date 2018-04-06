@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p >&copy 2018 Test Web-Application. All rights reserved.</p>
     </div>
 </footer>
 

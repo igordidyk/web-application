@@ -82,6 +82,8 @@
         </c:forEach>
         </tbody>
     </table>
+    <br>
+    <br>
     <script type="text/javascript" charset="utf-8">
         $('#books').dataTable();
     </script>
