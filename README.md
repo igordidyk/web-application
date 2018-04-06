@@ -1,24 +1,24 @@
 # Web-application
 ***
-###Description
-This web application is test project. 
+### Description
+This web application is test project with several tasks. 
 Tasks  (each  task has endpoint): 
 * Create basic CRUD (create/read/update/delete) for all tables 
     * Show authors which are older 55 years old and sort them by `born` column 
     * Return books whose author has more than 1 written books 
     * Find out author which has most books 
     * Calculate number of books by genre
-####Pre-requirements:
+#### Pre-requirements:
 * Java 8
 * MySQL
 * Hibernate/JPA
 * Spring MVC
-####Data structure:
+#### Data structure:
 * Books (id, name, published, genre, rating)
 * Authors (id, name, gender, born)
 * Book-Author (id, book-id,  author-id)
 
-####How to start up ?
+#### How to start up ?
     1. git clone
     2. create database:
         CREATE DATABASE testDb
